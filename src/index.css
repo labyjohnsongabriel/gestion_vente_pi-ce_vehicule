@@ -1,0 +1,245 @@
+/* Styles de la barre latérale */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: white;
+  color: rgb(28, 27, 27);
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.menu-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+
+}
+
+.menu-toggle svg {
+  color: black !important;
+  font-size: 28px;
+}
+
+.MuiListItemIcon-root {
+  min-width: 40px;
+  color: black !important; /* Force la couleur noire */
+}
+
+.menu-text {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  color: black;
+}
+
+.sidebar.collapsed .menu-text {
+  opacity: 0;
+}
+
+
+.menu-content {
+  background: white;
+  padding: 10px;
+  margin-left: 20px;
+  border-left: 3px solid #00c3ff;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-content h6 {
+  color: #6b6b6b;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+
+.MuiListItemButton-root {
+  padding: 12px 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  border-radius: 6px;
+  margin: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.MuiListItemButton-root:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: translateX(5px);
+}
+
+
+.main-content {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease-in-out;
+  padding: 20px;
+}
+
+.sidebar.collapsed + .main-content {
+  margin-left: 70px;
+}
+
+
+.card {
+  border-radius: 12px; /* Bordure plus douce */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 900px;
+  height: 500px;
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.card-text {
+  color: #6b6b6b;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.card-action {
+  padding: 12px;
+  text-align: center;
+  background-color: #e0e0e0;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card-action:hover {
+  background-color: #d6d6d6;
+}
+
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #ffffff;
+  color: black;
+  transition: width 0.3s ease;
+  padding-top: 10px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .main-content {
+    margin-left: 200px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 180px;
+  }
+  
+  .main-content {
+    margin-left: 180px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+  .menu-toggle svg {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .sidebar {
+    width: 60px;
+  }
+
+  .main-content {
+    margin-left: 60px;
+  }
+
+  .sidebar.collapsed .menu-text {
+    opacity: 0;
+  }
+
+  .menu-toggle svg {
+    font-size: 22px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .menu-content h6 {
+    font-size: 12px;
+  }
+
+  .MuiListItemButton-root {
+    padding: 10px 15px;
+  }
+}
