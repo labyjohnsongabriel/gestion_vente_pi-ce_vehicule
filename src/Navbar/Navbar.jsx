@@ -67,15 +67,18 @@ export default function Navbar() {
                 width: 30,
                 height: 30,
                 marginRight: "10px",
-      
               }}
             >
               {mode === "dark" ? <LightMode /> : <DarkMode />}
             </IconButton>
           </Tooltip>
-          
-
-
+          <Button
+            className="rounded-circle mr-3"
+            type="button"
+            style={{ color: "black", height: "50px" }}
+          >
+            <FaRegBell style={{ fontSize: "24px" }} />
+          </Button>
 
           <Button
             className="rounded-circle mr-3"
