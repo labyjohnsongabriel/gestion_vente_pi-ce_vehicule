@@ -14,7 +14,7 @@ const Footer = () => {
     <footer className="bg-dark text-white pt-5 pb-3 mt-5">
       <div className="container">
         <div className="row">
-          {/* Section À propos */}
+
           <div className="col-md-4 mb-4">
             <h5 className="fw-bold">À propos</h5>
             <p>
@@ -23,7 +23,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Liens rapides */}
+ 
           <div className="col-md-4 mb-4">
             <h5 className="fw-bold">Liens utiles</h5>
             <ul className="list-unstyled">
