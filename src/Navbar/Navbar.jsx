@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/image/logo (1).webp";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,14 +18,20 @@ import "../App.css";
 import Recherche from "../components/Recherche/recherche";
 import { LightMode, DarkMode } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import Tooltip from "@mui/material/Tooltip";
+import { motion } from "framer-motion"; 
 import { useCustomTheme } from "../Context/themContext";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNotification, setAnchorElNotification] = React.useState(null);
+  const [activeMenu, setActiveMenu] = useState(null);
 
-
+ const toggleMenu = (menu) => {
+   setActiveMenu(activeMenu === menu ? null : menu);
+  };
+  
   const open = Boolean(anchorEl);
   const openNotification = Boolean(anchorElNotification);
 
@@ -51,28 +57,38 @@ export default function Navbar() {
           <img src={logo} alt="logo" width="50" height="50" className="me-2" />
           <span className="fw-bold">HOSTASH</span>
         </Link>
-
+        <IconButton onClick={() => setOpen(!open)} className="menu-toggle">
+          <MenuIcon />
+        </IconButton>
         <div className="col-xs-3 d-flex align-items-center">
           <Recherche />
         </div>
 
         <div className="d-flex align-items-center">
           <Tooltip title="Changer le thème">
-            <IconButton
-              onClick={toggleTheme}
-              sx={{
-                backgroundColor: mode === "dark" ? "#333" : "#eee",
-                color: mode === "dark" ? "#fff" : "#000",
-                borderRadius: "50%",
-                width: 30,
-                height: 30,
-                marginRight: "10px",
-      
-              }}
+            <motion.div
+              whileHover={{ scale: 1.1 }} // Zoom au survol
+              whileTap={{ scale: 0.95 }} // Effet de clic
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              {mode === "dark" ? <LightMode /> : <DarkMode />}
-            </IconButton>
+              <IconButton
+                onClick={toggleTheme}
+                sx={{
+                  backgroundColor: mode === "dark" ? "#333" : "#eee",
+                  color: mode === "dark" ? "#fff" : "#000",
+                  borderRadius: "50%",
+                  width: 40,
+                  height: 40,
+                  marginRight: "10px",
+                  boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                  transition: "all 0.3s ease-in-out",
+                }}
+              >
+                {mode === "dark" ? <LightMode /> : <DarkMode />}
+              </IconButton>
+            </motion.div>
           </Tooltip>
+
           <Button
             className="rounded-circle mr-3"
             type="button"
@@ -116,7 +132,6 @@ export default function Navbar() {
             <p>johnson@gmail.com</p>
           </div>
 
-          {/* Menu Utilisateur */}
           <Menu
             anchorEl={anchorEl}
             id="account-menu"
