@@ -73,10 +73,10 @@ export default function Sidebar() {
           
           <Box className="menu-content">
             <Typography variant="h6">
-              <ListAltIcon />
+              <ListAltIcon /> Calendrier
             </Typography>
-            <Typography variant="h6">
-              <SecurityIcon /> 
+            <Typography variant="h6"> 
+              <SecurityIcon /> Sécurité
             </Typography>
           </Box>
         </Collapse>
