@@ -67,7 +67,6 @@ export default function Navbar() {
                 width: 30,
                 height: 30,
                 marginRight: "10px",
-      
               }}
             >
               {mode === "dark" ? <LightMode /> : <DarkMode />}
@@ -78,10 +77,8 @@ export default function Navbar() {
             type="button"
             style={{ color: "black", height: "50px" }}
           >
-            <IoIosCart style={{ fontSize: "24px" }} />
+            <FaRegBell style={{ fontSize: "24px" }} />
           </Button>
-
-
 
           <Button
             className="rounded-circle mr-3"
