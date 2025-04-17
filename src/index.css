@@ -87,6 +87,20 @@
   background: rgba(0, 0, 0, 0.05);
   transform: translateX(5px);
 }
+/* index.css */
+.sidebar {
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
 
 
 .main-content {
