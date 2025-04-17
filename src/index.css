@@ -18,9 +18,9 @@
 
 
 .menu-toggle {
-  display: flex !important;
+  display: flex;
   align-items: center;
-  justify-content: end !important;
+  justify-content: center;
   background: transparent;
   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
   cursor: pointer;
