@@ -81,13 +81,7 @@ export default function Navbar() {
             <IoIosCart style={{ fontSize: "24px" }} />
           </Button>
 
-          <Button
-            className="rounded-circle mr-3"
-            type="button"
-            style={{ color: "black", height: "50px" }}
-          >
-            <MdOutlineMailOutline style={{ fontSize: "24px" }} />
-          </Button>
+
 
           <Button
             className="rounded-circle mr-3"
