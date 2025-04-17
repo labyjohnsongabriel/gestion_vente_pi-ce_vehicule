@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom"
 import Navbar from "/src/Navbar/Navbar";
 import Dashboard from "/src/Page/Dashboard/Dashboard"
 import Sidebar from "/src/Slidebar/Slidebar"
+
+
 import React from "react"
 const router = createBrowserRouter([
   {

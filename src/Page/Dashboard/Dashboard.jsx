@@ -6,8 +6,10 @@ import "/src/index.css";
 import { useCustomTheme } from "../../Context/themContext";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Box } from "@mui/system";  
+import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import Footer from "../../Context/Footer"; // ✅ Assure-toi que le chemin est correct
+
 export default function Dashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -20,12 +22,13 @@ export default function Dashboard() {
       <Navbar toggleSidebar={toggleSidebar} />
 
       <div className="dashboard-content">
-        <Sidebar isOpen={isSidebarOpen} />
-
+        <Sidebar isOpen={isSidebarOpen} /> {/* ✅ On passe l'état à Sidebar */}
         <main className="main-content">
           <Card />
         </main>
       </div>
+
+      {/*  <Footer />} */}
     </div>
   );
 }
