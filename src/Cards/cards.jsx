@@ -34,8 +34,8 @@ function Cards() {
         width: "100%",
               display: "grid",
         
-        gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-        gap: 2,
+        gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
+        gap: 1,
         padding: 1,
       }}
     >

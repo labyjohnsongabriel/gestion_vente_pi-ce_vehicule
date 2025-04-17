@@ -4,7 +4,6 @@ import logo from "../assets/image/logo (1).webp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
 import { CiLight } from "react-icons/ci";
-import MenuIcon from "@mui/icons-material/Menu";
 import { IoIosCart } from "react-icons/io";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaRegBell } from "react-icons/fa6";
@@ -17,11 +16,15 @@ import Divider from "@mui/material/Divider";
 import { IoShieldHalfOutline } from "react-icons/io5";
 import "../App.css";
 import Recherche from "../components/Recherche/recherche";
-import Slidebar from "../Slidebar/Slidebar";
+import { LightMode, DarkMode } from "@mui/icons-material";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import { useCustomTheme } from "../Context/themContext";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNotification, setAnchorElNotification] = React.useState(null);
+
 
   const open = Boolean(anchorEl);
   const openNotification = Boolean(anchorElNotification);
@@ -39,6 +42,8 @@ export default function Navbar() {
     setAnchorElNotification(null);
   };
 
+  const { toggleTheme, mode } = useCustomTheme();
+
   return (
     <header className="navbar navbar-expand-lg bg-light px-3" id="navbar">
       <div className="container-fluid">
@@ -48,29 +53,26 @@ export default function Navbar() {
         </Link>
 
         <div className="col-xs-3 d-flex align-items-center">
-          {/* 
-<Button
-  className="collapsed rounded-circle"
-  type="button"
-  data-bs-toggle="collapse"
-  data-bs-target="#navbarNav"
-  aria-expanded="false"
-  aria-label="Toggle navigation"
-  style={{ color: "black", height: "50px" }}
-></Button>
-*/}
-
           <Recherche />
         </div>
 
-        <div className="key col-xs-3 d-flex align-items-center">
-          <Button
-            className="rounded-circle mr-3"
-            type="button"
-            style={{ color: "black", height: "50px" }}
-          >
-            <CiLight style={{ fontSize: "24px" }} />
-          </Button>
+        <div className="d-flex align-items-center">
+          <Tooltip title="Changer le thème">
+            <IconButton
+              onClick={toggleTheme}
+              sx={{
+                backgroundColor: mode === "dark" ? "#333" : "#eee",
+                color: mode === "dark" ? "#fff" : "#000",
+                borderRadius: "50%",
+                width: 30,
+                height: 30,
+                marginRight: "10px",
+      
+              }}
+            >
+              {mode === "dark" ? <LightMode /> : <DarkMode />}
+            </IconButton>
+          </Tooltip>
           <Button
             className="rounded-circle mr-3"
             type="button"
@@ -78,6 +80,7 @@ export default function Navbar() {
           >
             <IoIosCart style={{ fontSize: "24px" }} />
           </Button>
+
           <Button
             className="rounded-circle mr-3"
             type="button"
@@ -85,6 +88,7 @@ export default function Navbar() {
           >
             <MdOutlineMailOutline style={{ fontSize: "24px" }} />
           </Button>
+
           <Button
             className="rounded-circle mr-3"
             onClick={handleNotificationClick}
@@ -112,6 +116,7 @@ export default function Navbar() {
             <p>johnson@gmail.com</p>
           </div>
 
+          {/* Menu Utilisateur */}
           <Menu
             anchorEl={anchorEl}
             id="account-menu"
@@ -124,12 +129,6 @@ export default function Navbar() {
                   overflow: "visible",
                   filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                   mt: 1.5,
-                  "& .MuiAvatar-root": {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
                   "&::before": {
                     content: '""',
                     display: "block",
@@ -180,12 +179,6 @@ export default function Navbar() {
                   overflow: "visible",
                   filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                   mt: 1.5,
-                  "& .MuiAvatar-root": {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
                   "&::before": {
                     content: '""',
                     display: "block",
@@ -222,8 +215,7 @@ export default function Navbar() {
                 <div className="UserInfo">
                   <h4 className="fw-bold">
                     <span className="fw-bold2">
-                      <b>Johnson</b>
-                      added to his favorite list
+                      <b>Johnson</b> added to his favorite list{" "}
                       <b>Leader belt steve madden</b>
                     </span>
                   </h4>
@@ -231,9 +223,9 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="d-flex justify-content-between align-items-center">
-                <Button className="btn-primary" variant="">
-                  Vue tous notifications
+              <div className="d-flex justify-content-between align-items-center mt-2">
+                <Button className="btn-primary" variant="contained">
+                  Voir toutes les notifications
                 </Button>
               </div>
             </MenuItem>

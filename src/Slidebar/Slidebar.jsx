@@ -24,9 +24,10 @@ import {
   Security as SecurityIcon,
 } from "@mui/icons-material";
 import "../index.css"; // Importation du CSS
+import { useCustomTheme } from "../Context/themContext";
 
 export default function Sidebar() {
-  const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(true);
   const [activeMenu, setActiveMenu] = useState(null);
 
   const toggleMenu = (menu) => {
@@ -66,6 +67,7 @@ export default function Sidebar() {
           </ListItemIcon>
           <ListItemText primary="Utilisateurs" />
           {activeMenu === "users" ? <ExpandLess /> : <ExpandMore />}
+          
         </ListItemButton>
         <Collapse in={activeMenu === "users"} timeout="auto" unmountOnExit>
           
@@ -96,7 +98,6 @@ export default function Sidebar() {
             </Typography>
           </Box>
         </Collapse>
-
 
         <ListItemButton>
           <ListItemIcon>
