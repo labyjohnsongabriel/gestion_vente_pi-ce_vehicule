@@ -73,13 +73,7 @@ export default function Navbar() {
               {mode === "dark" ? <LightMode /> : <DarkMode />}
             </IconButton>
           </Tooltip>
-          <Button
-            className="rounded-circle mr-3"
-            type="button"
-            style={{ color: "black", height: "50px" }}
-          >
-            <IoIosCart style={{ fontSize: "24px" }} />
-          </Button>
+          
 
 
 
