@@ -2,13 +2,23 @@ import { createBrowserRouter } from "react-router-dom"
 import Navbar from "/src/Navbar/Navbar";
 import Dashboard from "/src/Page/Dashboard/Dashboard"
 import Sidebar from "/src/Slidebar/Slidebar"
-
+import Home from "../components/Home/Home"; // Home page
+import Dashboard from "../components/Dashboard/Dashboard"; // Example Dashboard page
+import Profile from "../components/Profile/Profile"; // 
 
 import React from "react"
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/Dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/Profile",
+    element: <Profile />,
   },
   {
     path: "/Menu",
@@ -16,9 +26,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/Slidebar",
-    element
-    : <Sidebar />,
-  }
+    element: <Sidebar />,
+  },
 ]);
 
 export default router;

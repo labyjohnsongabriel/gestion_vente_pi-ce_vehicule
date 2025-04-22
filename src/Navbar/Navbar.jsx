@@ -3,35 +3,35 @@ import { Link } from "react-router-dom";
 import logo from "../assets/image/logo (1).webp";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
-import { CiLight } from "react-icons/ci";
-import { IoIosCart } from "react-icons/io";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { FaRegBell } from "react-icons/fa6";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Logout from "@mui/icons-material/Logout";
 import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import { PersonAdd, Logout, Menu as MenuIcon } from "@mui/icons-material";
+import { motion } from "framer-motion";
+import { IoIosCart } from "react-icons/io";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { FaRegBell } from "react-icons/fa6";
 import { IoShieldHalfOutline } from "react-icons/io5";
 import "../App.css";
 import Recherche from "../components/Recherche/recherche";
 import { LightMode, DarkMode } from "@mui/icons-material";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Tooltip from "@mui/material/Tooltip";
-import { motion } from "framer-motion"; 
 import { useCustomTheme } from "../Context/themContext";
+import { useSidebar } from "../Context/SidebarContext.jsx";
+import "../../src/index.css"; // Updated path for styles
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElNotification, setAnchorElNotification] = React.useState(null);
   const [activeMenu, setActiveMenu] = useState(null);
+  const { toggleSidebar } = useSidebar(); // Utilisation du contexte
 
- const toggleMenu = (menu) => {
-   setActiveMenu(activeMenu === menu ? null : menu);
+  const toggleMenu = (menu) => {
+    setActiveMenu(activeMenu === menu ? null : menu);
   };
-  
+
   const open = Boolean(anchorEl);
   const openNotification = Boolean(anchorElNotification);
 
@@ -57,7 +57,7 @@ export default function Navbar() {
           <img src={logo} alt="logo" width="50" height="50" className="me-2" />
           <span className="fw-bold">HOSTASH</span>
         </Link>
-        <IconButton onClick={() => setOpen(!open)} className="menu-toggle">
+        <IconButton onClick={toggleSidebar} className="menu-toggle">
           <MenuIcon />
         </IconButton>
         <div className="col-xs-3 d-flex align-items-center">
@@ -67,8 +67,8 @@ export default function Navbar() {
         <div className="d-flex align-items-center">
           <Tooltip title="Changer le thème">
             <motion.div
-              whileHover={{ scale: 1.1 }} // Zoom au survol
-              whileTap={{ scale: 0.95 }} // Effet de clic
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <IconButton

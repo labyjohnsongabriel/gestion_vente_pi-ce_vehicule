@@ -21,10 +21,12 @@ import {
   Edit as EditIcon,
   Security as SecurityIcon,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom"; // Importation de Link pour la navigation
-import "../index.css"; // Importation du CSS
+import { Link } from "react-router-dom";
+import "../index.css";
+import { useSidebar } from "../Context/SidebarContext.jsx";
 
 export default function Sidebar() {
+  const { isSidebarOpen } = useSidebar(); // Removed toggleSidebar
   const [activeMenu, setActiveMenu] = useState(null);
 
   const toggleMenu = (menu) => {
@@ -33,101 +35,118 @@ export default function Sidebar() {
 
   return (
     <Box
-      className="sidebar"
+      className={`sidebar ${isSidebarOpen ? "" : "collapsed"}`}
       sx={{
-        width: 250,
+        width: isSidebarOpen ? 250 : 80,
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
-        backgroundColor: "background.paper",
-        color: "text.primary", 
-        borderRight: "1px solid #ccc",
+        backgroundColor: "#1e293b",
+        color: "#f8fafc",
+        borderRight: "1px solid #334155",
+        transition: "all 0.3s ease-in-out",
       }}
     >
-
       <List>
         <ListItemButton onClick={() => toggleMenu("dashboard")}>
           <ListItemIcon>
-            <DashboardIcon />
+            <DashboardIcon style={{ color: "#f8fafc" }} />
           </ListItemIcon>
-          <ListItemText primary="Dashboard" />
+          {isSidebarOpen && <ListItemText primary="Dashboard" />}
           {activeMenu === "dashboard" ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={activeMenu === "dashboard"} timeout="auto" unmountOnExit>
-          <Box className="menu-content">
-            <Link to="/statistiques">
-              <Typography variant="h6">
-                <BarChartIcon /> Statistiques
-              </Typography>
+          <Box
+            className="menu-content"
+            sx={{ paddingLeft: isSidebarOpen ? "1rem" : "0.5rem" }}
+          >
+            <Link to="/statistiques" className="sidebar-link">
+              {isSidebarOpen && (
+                <Typography variant="h6">
+                  <BarChartIcon /> Statistiques
+                </Typography>
+              )}
             </Link>
-            <Link to="/rapports">
-              <Typography variant="h6">
-                <ListAltIcon /> Rapports détaillés
-              </Typography>
+            <Link to="/rapports" className="sidebar-link">
+              {isSidebarOpen && (
+                <Typography variant="h6">
+                  <ListAltIcon /> Rapports détaillés
+                </Typography>
+              )}
             </Link>
           </Box>
         </Collapse>
 
-        {/* Utilisateurs */}
         <ListItemButton onClick={() => toggleMenu("users")}>
           <ListItemIcon>
-            <PeopleIcon />
+            <PeopleIcon style={{ color: "#f8fafc" }} />
           </ListItemIcon>
-          <ListItemText primary="Utilisateurs" />
+          {isSidebarOpen && <ListItemText primary="Utilisateurs" />}
           {activeMenu === "users" ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={activeMenu === "users"} timeout="auto" unmountOnExit>
-          <Box className="menu-content">
-            <Link to="/calendrier">
-              <Typography variant="h6">
-                <ListAltIcon /> Calendrier
-              </Typography>
+          <Box
+            className="menu-content"
+            sx={{ paddingLeft: isSidebarOpen ? "1rem" : "0.5rem" }}
+          >
+            <Link to="/calendrier" className="sidebar-link">
+              {isSidebarOpen && (
+                <Typography variant="h6">
+                  <ListAltIcon /> Calendrier
+                </Typography>
+              )}
             </Link>
-            <Link to="/securite">
-              <Typography variant="h6">
-                <SecurityIcon /> Sécurité
-              </Typography>
+            <Link to="/securite" className="sidebar-link">
+              {isSidebarOpen && (
+                <Typography variant="h6">
+                  <SecurityIcon /> Sécurité
+                </Typography>
+              )}
             </Link>
           </Box>
         </Collapse>
 
-        {/* Profil */}
         <ListItemButton onClick={() => toggleMenu("profile")}>
           <ListItemIcon>
-            <AccountCircleIcon />
+            <AccountCircleIcon style={{ color: "#f8fafc" }} />
           </ListItemIcon>
-          <ListItemText primary="Profil" />
+          {isSidebarOpen && <ListItemText primary="Profil" />}
           {activeMenu === "profile" ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={activeMenu === "profile"} timeout="auto" unmountOnExit>
-          <Box className="menu-content">
-            <Link to="/profil">
-              <Typography variant="h6">
-                <AccountCircleIcon /> Voir le profil
-              </Typography>
+          <Box
+            className="menu-content"
+            sx={{ paddingLeft: isSidebarOpen ? "1rem" : "0.5rem" }}
+          >
+            <Link to="/profil" className="sidebar-link">
+              {isSidebarOpen && (
+                <Typography variant="h6">
+                  <AccountCircleIcon /> Voir le profil
+                </Typography>
+              )}
             </Link>
-            <Link to="/modifier-profil">
-              <Typography variant="h6">
-                <EditIcon /> Modifier le profil
-              </Typography>
+            <Link to="/modifier-profil" className="sidebar-link">
+              {isSidebarOpen && (
+                <Typography variant="h6">
+                  <EditIcon /> Modifier le profil
+                </Typography>
+              )}
             </Link>
           </Box>
         </Collapse>
 
         <ListItemButton>
           <ListItemIcon>
-            <SettingsIcon />
+            <SettingsIcon style={{ color: "#f8fafc" }} />
           </ListItemIcon>
-          <ListItemText primary="Paramètres" />
+          {isSidebarOpen && <ListItemText primary="Paramètres" />}
         </ListItemButton>
-
 
         <ListItemButton>
           <ListItemIcon>
-            <ExitToAppIcon />
+            <ExitToAppIcon style={{ color: "#f8fafc" }} />
           </ListItemIcon>
-          <ListItemText primary="Déconnexion" />
+          {isSidebarOpen && <ListItemText primary="Déconnexion" />}
         </ListItemButton>
       </List>
     </Box>
