@@ -41,7 +41,7 @@ export default function Sidebar() {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
- 
+        backgroundColor: "#1e293b",
         color: "#f8fafc",
         borderRight: "1px solid #334155",
         transition: "all 0.3s ease-in-out",
