@@ -105,14 +105,7 @@ export default function Navbar() {
             <MdOutlineMailOutline style={{ fontSize: "24px" }} />
           </Button>
 
-          <Button
-            className="rounded-circle mr-3"
-            onClick={handleNotificationClick}
-            type="button"
-            style={{ color: "black", height: "50px" }}
-          >
-            <FaRegBell style={{ fontSize: "24px" }} />
-          </Button>
+     
         </div>
 
         <div className="myAcc d-flex align-items-center">
