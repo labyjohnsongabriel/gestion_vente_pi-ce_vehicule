@@ -9,7 +9,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import { PersonAdd, Logout, Menu as MenuIcon } from "@mui/icons-material";
+import Badge from "@mui/material/Badge";
+import {
+  PersonAdd,
+  Logout,
+  Menu as MenuIcon,
+  LightMode,
+  DarkMode,
+} from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { IoIosCart } from "react-icons/io";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -17,23 +24,16 @@ import { FaRegBell } from "react-icons/fa6";
 import { IoShieldHalfOutline } from "react-icons/io5";
 import "../App.css";
 import Recherche from "../components/Recherche/recherche";
-import { LightMode, DarkMode } from "@mui/icons-material";
-import { useCustomTheme } from "../Context/themContext";
+import { useCustomTheme } from "../Context/ThemeContext.jsx";
 import { useSidebar } from "../Context/SidebarContext.jsx";
 import "../../src/index.css"; // Updated path for styles
 
 export default function Navbar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [anchorElNotification, setAnchorElNotification] = React.useState(null);
-  const [activeMenu, setActiveMenu] = useState(null);
-  const { toggleSidebar } = useSidebar(); // Utilisation du contexte
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElNotification, setAnchorElNotification] = useState(null);
+  const { toggleSidebar } = useSidebar();
 
-  const toggleMenu = (menu) => {
-    setActiveMenu(activeMenu === menu ? null : menu);
-  };
-
-  const open = Boolean(anchorEl);
-  const openNotification = Boolean(anchorElNotification);
+  const { toggleTheme, mode } = useCustomTheme();
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -48,7 +48,8 @@ export default function Navbar() {
     setAnchorElNotification(null);
   };
 
-  const { toggleTheme, mode } = useCustomTheme();
+  const open = Boolean(anchorEl);
+  const openNotification = Boolean(anchorElNotification);
 
   return (
     <header className="navbar navbar-expand-lg bg-light px-3" id="navbar">
@@ -57,15 +58,17 @@ export default function Navbar() {
           <img src={logo} alt="logo" width="50" height="50" className="me-2" />
           <span className="fw-bold">HOSTASH</span>
         </Link>
+
         <IconButton onClick={toggleSidebar} className="menu-toggle">
           <MenuIcon />
         </IconButton>
+
         <div className="col-xs-3 d-flex align-items-center">
           <Recherche />
         </div>
 
         <div className="d-flex align-items-center">
-          <Tooltip title="Changer le thème">
+     { /*    <Tooltip title="Changer le thème">
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -87,32 +90,32 @@ export default function Navbar() {
                 {mode === "dark" ? <LightMode /> : <DarkMode />}
               </IconButton>
             </motion.div>
-          </Tooltip>
+          </Tooltip>*/}
 
-          <Button
-            className="rounded-circle mr-3"
-            type="button"
-            style={{ color: "black", height: "50px" }}
-          >
+
+          <Tooltip title="Notifications">
+  <IconButton
+    onClick={handleNotificationClick}
+    sx={{
+      color: "black",
+      height: "50px",
+    }}
+  >
+    <Badge badgeContent={4} color="error">
+      <FaRegBell style={{ fontSize: "24px" }} />
+    </Badge>
+  </IconButton>
+</Tooltip>
+
+          <Button className="rounded-circle mr-3" type="button" style={{ color: "black", height: "50px" }}>
             <IoIosCart style={{ fontSize: "24px" }} />
           </Button>
 
-          <Button
-            className="rounded-circle mr-3"
-            type="button"
-            style={{ color: "black", height: "50px" }}
-          >
+          <Button className="rounded-circle mr-3" type="button" style={{ color: "black", height: "50px" }}>
             <MdOutlineMailOutline style={{ fontSize: "24px" }} />
           </Button>
 
-          <Button
-            className="rounded-circle mr-3"
-            onClick={handleNotificationClick}
-            type="button"
-            style={{ color: "black", height: "50px" }}
-          >
-            <FaRegBell style={{ fontSize: "24px" }} />
-          </Button>
+     
         </div>
 
         <div className="myAcc d-flex align-items-center">
@@ -137,28 +140,6 @@ export default function Navbar() {
             id="account-menu"
             open={open}
             onClose={handleClose}
-            slotProps={{
-              paper: {
-                elevation: 0,
-                sx: {
-                  overflow: "visible",
-                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                  mt: 1.5,
-                  "&::before": {
-                    content: '""',
-                    display: "block",
-                    position: "absolute",
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: "background.paper",
-                    transform: "translateY(-50%) rotate(45deg)",
-                    zIndex: 0,
-                  },
-                },
-              },
-            }}
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
@@ -187,28 +168,6 @@ export default function Navbar() {
             id="notification-item"
             open={openNotification}
             onClose={handleClose}
-            slotProps={{
-              paper: {
-                elevation: 0,
-                sx: {
-                  overflow: "visible",
-                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                  mt: 1.5,
-                  "&::before": {
-                    content: '""',
-                    display: "block",
-                    position: "absolute",
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: "background.paper",
-                    transform: "translateY(-50%) rotate(45deg)",
-                    zIndex: 0,
-                  },
-                },
-              },
-            }}
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
@@ -230,11 +189,10 @@ export default function Navbar() {
                 <div className="UserInfo">
                   <h4 className="fw-bold">
                     <span className="fw-bold2">
-                      <b>Johnson</b> added to his favorite list{" "}
-                      <b>Leader belt steve madden</b>
+                      <b>Johnson</b> a ajouté <b>“Ceinture Steve Madden”</b> à ses favoris
                     </span>
                   </h4>
-                  <p className="test-sky mb-0">2 minutes ago</p>
+                  <p className="test-sky mb-0">il y a 2 minutes</p>
                 </div>
               </div>
 

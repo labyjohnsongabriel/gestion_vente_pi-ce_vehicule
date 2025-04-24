@@ -1,0 +1,22 @@
+/* index.css */
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  padding-top: 64px;
+  overflow-y: auto;
+  background-color: #f4f7fa;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #191d22;
+}

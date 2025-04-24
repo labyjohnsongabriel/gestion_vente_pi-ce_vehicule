@@ -1,84 +1,53 @@
-import { createBrowserRouter } from "react-router-dom"
-import Navbar from "/src/Navbar/Navbar";
-import Dashboard from "/src/Page/Dashboard/Dashboard"
-import Sidebar from "/src/Slidebar/Slidebar"
-import Home from "../components/Home/Home"; // Home page
-import Dashboard from "../components/Dashboard/Dashboard"; // Example Dashboard page
-import Profile from "../components/Profile/Profile"; // 
-
-import React from "react"
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/dashboard",
-    element: <Dashboard />,
-  },
-  {
-    path: "/Profile",
-    element: <Profile />,
-  },
-  {
-    path: "/Menu",
-    element: <Navbar />,
-  },
-  {
-    path: "/Slidebar",
-    element: <Sidebar />,
-  },
-]);
-
-export default router;
-
-
-
-/*
-import { createBrowserRouter } from "react-router-dom";
 import React from "react";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 
-import Navbar from "/src/Navbar/Navbar";
-import Dashboard from "/src/Page/Dashboard/Dashboard";
-import Slidebar from "/src/Slidebar/Slidebar";
+// Importation des composants
+import Home from "./src/components/Home/Home";
+import Dashboard from "./src/components/Dashboard/Dashboard";
+import Profile from "./src/components/Profile/Profile";
+import Registre from "./src/Navbar/Registre"; // Corrected path
+import Login from "./src/Navbar/Login"; // Corrected path
+import Navbar from "./src/Navbar/Navbar";
+import Sidebar from "./src/Slidebar/Slidebar";
 
-
-const Layout = ({ children }) => (
+const MainLayout = () => (
   <div>
-    <div className="">
-      <Slidebar />
-      <main className="flex-grow-1 p-3">{children}</main>
-    </div>
+    <Navbar />
+    <Outlet /> {/* Renders child routes */}
   </div>
 );
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <Layout>
-        <Dashboard />
-      </Layout>
-    ),
-  },
-  {
-    path: "/Menu",
-    element: (
-      <Layout>
-        <Navbar />
-      </Layout>
-    ),
-  },
-  {
-    path: "/Slidebar",
-    element: (
-      <Layout>
-        <Slidebar />
-      </Layout>
-    ),
+    element: <MainLayout />, // Main layout
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Registre />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/sidebar",
+        element: <Sidebar />,
+      },
+    ],
   },
 ]);
 
 export default router;
-*
-*/

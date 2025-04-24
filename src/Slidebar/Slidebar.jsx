@@ -22,11 +22,14 @@ import {
   Security as SecurityIcon,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+
 import "../index.css";
 import { useSidebar } from "../Context/SidebarContext.jsx";
+import Profile from "../components/Profile/Profile";
+import ProfileEdit from "../components/Profile/ProfileEdit";
 
 export default function Sidebar() {
-  const { isSidebarOpen } = useSidebar(); // Removed toggleSidebar
+  const { isSidebarOpen } = useSidebar();
   const [activeMenu, setActiveMenu] = useState(null);
 
   const toggleMenu = (menu) => {
@@ -48,6 +51,7 @@ export default function Sidebar() {
       }}
     >
       <List>
+        {/* Dashboard */}
         <ListItemButton onClick={() => toggleMenu("dashboard")}>
           <ListItemIcon>
             <DashboardIcon style={{ color: "#f8fafc" }} />
@@ -77,6 +81,7 @@ export default function Sidebar() {
           </Box>
         </Collapse>
 
+        {/* Utilisateurs */}
         <ListItemButton onClick={() => toggleMenu("users")}>
           <ListItemIcon>
             <PeopleIcon style={{ color: "#f8fafc" }} />
@@ -106,6 +111,7 @@ export default function Sidebar() {
           </Box>
         </Collapse>
 
+        {/* Profil */}
         <ListItemButton onClick={() => toggleMenu("profile")}>
           <ListItemIcon>
             <AccountCircleIcon style={{ color: "#f8fafc" }} />
@@ -118,14 +124,14 @@ export default function Sidebar() {
             className="menu-content"
             sx={{ paddingLeft: isSidebarOpen ? "1rem" : "0.5rem" }}
           >
-            <Link to="/profil" className="sidebar-link">
+            <Link to="/profile" className="sidebar-link">
               {isSidebarOpen && (
                 <Typography variant="h6">
                   <AccountCircleIcon /> Voir le profil
                 </Typography>
               )}
             </Link>
-            <Link to="/modifier-profil" className="sidebar-link">
+            <Link to="/profile/edit" className="sidebar-link">
               {isSidebarOpen && (
                 <Typography variant="h6">
                   <EditIcon /> Modifier le profil
@@ -135,6 +141,7 @@ export default function Sidebar() {
           </Box>
         </Collapse>
 
+        {/* Paramètres */}
         <ListItemButton>
           <ListItemIcon>
             <SettingsIcon style={{ color: "#f8fafc" }} />
@@ -142,6 +149,7 @@ export default function Sidebar() {
           {isSidebarOpen && <ListItemText primary="Paramètres" />}
         </ListItemButton>
 
+        {/* Déconnexion */}
         <ListItemButton>
           <ListItemIcon>
             <ExitToAppIcon style={{ color: "#f8fafc" }} />

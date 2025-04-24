@@ -27,3 +27,92 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+/* Style global pour le conteneur principal */
+.home-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f4f6f8, #e3f2fd); /* Dégradé doux */
+  min-height: 100vh; /* Prend toute la hauteur de l'écran */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Titre principal */
+.home-container h3 {
+  color: #007bff;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Ombre pour le texte */
+  margin-bottom: 1rem;
+}
+
+/* Sous-titre */
+.home-container h6 {
+  color: #6c757d; /* Couleur grise pour le sous-titre */
+  margin-bottom: 2rem;
+}
+
+/* Grille des produits */
+.home-container .MuiGrid-container {
+  margin-top: 2rem;
+}
+
+/* Style des cartes */
+.MuiCard-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  border-radius: 16px; /* Coins arrondis */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.MuiCard-root:hover {
+  transform: scale(1.05); /* Zoom au survol */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+}
+
+/* Image des cartes */
+.MuiCardMedia-root {
+  object-fit: cover;
+  border-radius: 16px 16px 0 0; /* Coins arrondis pour l'image */
+}
+
+/* Contenu des cartes */
+.MuiCardContent-root {
+  flex-grow: 1;
+}
+
+/* Titre des produits */
+.MuiCardContent-root h6 {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Description des produits */
+.MuiCardContent-root p {
+  color: #6c757d; /* Couleur grise pour la description */
+  margin-top: 0.5rem;
+  min-height: 60px; /* Hauteur minimale pour aligner les descriptions */
+}
+
+/* Prix des produits */
+.MuiCardContent-root .MuiTypography-h6 {
+  color: #007bff;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Bouton Acheter maintenant */
+.MuiButton-contained {
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #007bff, #0056b3); /* Dégradé pour le bouton */
+  color: #fff;
+  font-weight: bold;
+  border-radius: 0 0 16px 16px; /* Coins arrondis pour le bas */
+  transition: background 0.3s ease;
+}
+
+.MuiButton-contained:hover {
+  background: linear-gradient(90deg, #0056b3, #003f7f); /* Dégradé au survol */
+}

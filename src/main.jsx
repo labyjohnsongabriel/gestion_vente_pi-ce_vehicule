@@ -1,20 +1,21 @@
-// src/main.jsx
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
-import "./index.css";
-import { CustomThemeProvider } from "./Context/themContext";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 import { SidebarProvider } from "./Context/SidebarContext";
-import App from "./App"; // Import App directly
+import { ThemeProvider } from "./Context/ThemeContext"; 
+import { UserProvider } from "./Context/UserContext";
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <BrowserRouter> {/* Wrap the application in BrowserRouter */}
-      <CustomThemeProvider>
-        <SidebarProvider>
-          <App />
-        </SidebarProvider>
-      </CustomThemeProvider>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <SidebarProvider>
+        <ThemeProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </ThemeProvider>
+      </SidebarProvider>
     </BrowserRouter>
-  </StrictMode>
+  </React.StrictMode>
 );

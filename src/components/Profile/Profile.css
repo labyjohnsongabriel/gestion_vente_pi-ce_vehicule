@@ -1,0 +1,52 @@
+/* Profile.css */
+
+.MuiCard-root {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.MuiTypography-h4 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.MuiTypography-h5 {
+  font-weight: 600;
+}
+
+.MuiTypography-body1 {
+  font-size: 16px;
+  color: #888;
+}
+
+.MuiTypography-body2 {
+  font-size: 14px;
+  color: #555;
+}
+
+.MuiButton-root {
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.MuiTextField-root {
+  margin-bottom: 16px;
+}
+
+.MuiAvatar-root {
+  width: 120px !important;
+  height: 120px !important;
+  margin-bottom: 16px;
+}
+
+.MuiGrid-container {
+  margin-top: 20px;
+}
+
+.MuiButton-contained {
+  background-color: #1976d2 !important;
+}
+
+.MuiButton-contained:hover {
+  background-color: #1565c0;
+}

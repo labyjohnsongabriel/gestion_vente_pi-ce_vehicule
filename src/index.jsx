@@ -1,11 +1,12 @@
+// main.jsx (si tu utilises Vite)
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import { SidebarProvider } from "./Context/SidebarContext"; // Import du provider
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.jsx";
+import "./index.css";
 
-ReactDOM.render(
-  <SidebarProvider>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
     <App />
-  </SidebarProvider>,
-  document.getElementById("root")
+  </BrowserRouter>
 );

@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1e293b;
+  background: #f8fafc;
   color: #f8fafc;
   cursor: pointer;
   padding: 10px;
@@ -289,3 +289,15 @@ body {
 .sidebar-link:hover {
   color: #38bdf8; /* Highlight color */
 }
+
+.navbar-default {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.navbar-scrolled {
+  background-color: #1e293b; /* Dark background when scrolled */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  color: #f8fafc;
+}
+

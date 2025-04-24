@@ -16,7 +16,7 @@ import v4 from "../../assets/image/v4.jpg"; // Assuming v4 is a local image
 import v5 from "../../assets/image/v5.jpg"; // Assuming v5 is a local image
 import v6 from "../../assets/image/v6.jpg"; // Assuming v6 is a local image
 import "../../App.css"; // Assuming you have some global styles
-
+import "../../styles/Home.css";
 export default function Home() {
   const products = [
     {
@@ -90,9 +90,10 @@ export default function Home() {
             >
               <Card
                 sx={{
-                  height: "100%",
+                  height: "100%", // Ensure all cards have the same height
                   display: "flex",
                   flexDirection: "column",
+                  justifyContent: "space-between", // Align content properly
                   boxShadow: 3,
                   borderRadius: "16px",
                   transition: "transform 0.3s ease",
@@ -106,7 +107,7 @@ export default function Home() {
                   alt={product.name}
                   sx={{ objectFit: "cover" }}
                 />
-                <CardContent>
+                <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6" fontWeight="bold">
                     {product.name}
                   </Typography>
@@ -124,20 +125,20 @@ export default function Home() {
                   >
                     {product.price}
                   </Typography>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                      mt: 2,
-                      backgroundColor: "#007bff",
-                      color: "#fff",
-                      fontWeight: "bold",
-                      "&:hover": { backgroundColor: "#0056b3" },
-                    }}
-                  >
-                    Acheter maintenant
-                  </Button>
                 </CardContent>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{
+                    mt: 2,
+                    backgroundColor: "#007bff",
+                    color: "#fff",
+                    fontWeight: "bold",
+                    "&:hover": { backgroundColor: "#0056b3" },
+                  }}
+                >
+                  Acheter maintenant
+                </Button>
               </Card>
             </motion.div>
           </Grid>

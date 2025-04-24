@@ -1,0 +1,93 @@
+/* Conteneur principal */
+.overview-container {
+  padding: 2rem;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+}
+
+/* Titres */
+.overview-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Card principale */
+.metric-card {
+  height: 180px;
+  border-radius: 20px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.metric-card:hover {
+  transform: scale(1.03);
+}
+
+/* Contenu de la card */
+.metric-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Icônes */
+.metric-icon {
+  font-size: 3rem;
+  margin-right: 1rem;
+  color: #1976d2;
+}
+
+/* Texte principal dans les cards */
+.metric-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Titre de section */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+/* Tableau (DataGrid) */
+.data-grid-container {
+  height: 400px;
+  width: 100%;
+  background-color:#f1f5f9;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+}
+/* Make sure the container takes full width on mobile */
+@media (max-width: 600px) {
+  .MuiCard-root {
+    margin: 10px 0;
+  }
+
+  .MuiGrid-item {
+    margin: 0;
+    padding: 0;
+  }
+
+  .MuiDataGrid-root {
+    font-size: 12px !important;
+  }
+}
+
+.card-content {
+  padding: 24px;
+}
+
+.big-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.big-value {
+  font-size: 36px;
+}
